@@ -52,7 +52,7 @@ const Editor = ()=>{
 
     useEffect (()=>{  // for socket connection
 
-      const socketServer = io('http://localhost:3022');  // create connetion
+      const socketServer = io('https://googledocback.onrender.com/');  // create connetion
 
       setSocket(socketServer);
 
@@ -121,6 +121,15 @@ const Editor = ()=>{
   },[quill,socket,id]);
 
 
+  useEffect(()=>{  // save data in db after every 2 seconds
+      if(socket === null || quill === null) return ;
+      const interval = setInterval(()=>{
+        socket && socket.emit('save-document',quill.getContents());
+      },2000);
+      return ()=>{
+        clearInterval(interval);
+      }
+  },[socket , quill])
 
     return (
 
