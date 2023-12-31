@@ -52,7 +52,7 @@ const Editor = ()=>{
 
     useEffect (()=>{  // for socket connection
 
-      const socketServer = io('https://googledocback.onrender.com/');  // create connetion
+      const socketServer = io('https://googledocback.onrender.com');  // create connetion
 
       setSocket(socketServer);
 
