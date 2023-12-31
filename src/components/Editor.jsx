@@ -45,14 +45,14 @@ const Editor = ()=>{
 
     useEffect(()=>{ // for editor 
        const quillServer =  new Quill('#container',{theme : 'snow',modules:{toolbar:toolbarOptions}})
-       quillServer.disable();  // server disable untill  exist doc load
-       quillServer.setText('Loading the document please wait for a moment ...')
+      //  quillServer.disable();  // server disable untill  exist doc load
+      //  quillServer.setText('Loading the document please wait for a moment ...')
        setQuill(quillServer);
     },[]);
 
     useEffect (()=>{  // for socket connection
 
-      const socketServer = io('https://googledocback.onrender.com');  // create connetion
+      const socketServer = io('https://googledocback.onrender.com/');  // create connetion
 
       setSocket(socketServer);
 
